@@ -17,10 +17,10 @@ export class AppComponent {
 
   GetUsers(){
     this.http.get('https://localhost:5001/api/users').subscribe(
-      (response) => {
+      response => {
         this.users = response;
       },
-      (error) => {
+      error => {
         console.log(error);
       }
     );
