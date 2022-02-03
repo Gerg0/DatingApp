@@ -13,6 +13,7 @@ loggedin: boolean;
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.getCurrentUser();
   }
 
   login(){
@@ -24,4 +25,16 @@ loggedin: boolean;
     })
   }
 
+  logout() {
+    this.accountService.logout();
+
+    this.loggedin = false;
+  }
+
+
+  getCurrentUser(){
+      this.accountService.currentUser$.subscribe(user =>{
+        this.loggedin = !!user;
+      })
+  }
 }
