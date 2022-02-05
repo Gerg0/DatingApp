@@ -14,7 +14,6 @@ export class AppComponent {
   constructor(private http: HttpClient, private accountService: AccountService) {}
 
   ngOnInit() {
-    this.GetUsers();
     this.setCurrentUser();
   }
 
@@ -23,14 +22,5 @@ export class AppComponent {
     this.accountService.setCurrentUser(user);
   }
 
-  GetUsers(){
-    this.http.get('https://localhost:5001/api/users').subscribe(
-      response => {
-        this.users = response;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+
 }
