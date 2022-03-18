@@ -22,7 +22,7 @@ export class MemberEditComponent implements OnInit {
     }
   }
   constructor(private acountService : AccountService, private memberService : MembersService, private toastr:ToastrService) { 
-    this.acountService.currentUsers.pipe(take(1)).subscribe(user => this.user = user);
+    this.acountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
   ngOnInit(): void {
