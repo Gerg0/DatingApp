@@ -4,6 +4,7 @@ import { NgxGalleryAction, NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptio
 import { Member } from 'src/app/_models/member';
 import { MembersService } from 'src/app/_services/members.service';
 
+
 @Component({
   selector: 'app-member-detail',
   templateUrl: './member-detail.component.html',
@@ -16,7 +17,7 @@ export class MemberDetailComponent implements OnInit {
 
   constructor(
     private memberService: MembersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -24,25 +25,24 @@ export class MemberDetailComponent implements OnInit {
 
     this.galleryOptions = [
       {
-        width:'500px',
-        height:'500px',
+        width: '500px',
+        height: '500px',
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
         preview: false,
-      }
-    ]
-
+      },
+    ];
   }
 
   getImages(): NgxGalleryImage[] {
-    const imageUrls=[];
-    for(const photo of this.member.photos){
+    const imageUrls = [];
+    for (const photo of this.member.photos) {
       imageUrls.push({
         small: photo?.url,
         medium: photo?.url,
-        big: photo?.url
-      })
+        big: photo?.url,
+      });
     }
     return imageUrls;
   }
@@ -53,7 +53,6 @@ export class MemberDetailComponent implements OnInit {
       .subscribe((member) => {
         this.member = member;
         this.galleryImages = this.getImages();
-
       });
   }
 }
