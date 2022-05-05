@@ -14,6 +14,7 @@ import { AccountService } from './account.service';
 @Injectable({
   providedIn: 'root',
 })
+
 export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
